@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+		<title>Generic - Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Kelsey Chen's personal website</a>
+				<nav>
+					<a class="icon solid fa-arrow-circle-left" href="index.html">  Homepage</a></li>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Leetcode 658. Find K Closest Elements</h1>
+							<!-- <span class="image fit"><img src="images/pic04.jpg" alt="" /></span> -->
+							
+							<h4>Step1: find the closest 2 numbers to x</h4>
+							<h4>Step2: run a loop starting from the closest 2 numbers to find the K closest numbers</h4>
+							<h4>Step2: step3: sort the list</h4>
+					
+							<p><textarea cols="1" rows="25">
+
+								class Solution {
+									public List<Integer> findClosestElements(int[] arr, int k, int x) {
+										if(arr == null || arr.length == 0) return null;
+										int[] res = new int[k];
+										int left = 0;
+										int right = arr.length-1;
+										while(left < right - 1){
+											int mid = (right - left) / 2 + left;
+											if(arr[mid] == x) {
+												res[0] = x;
+												if(x-arr[mid-1] < arr[mid+1]-x){
+													left = mid-1;
+													right = mid;
+												}
+												else {
+													left = mid;
+													right = mid+1;
+												}
+												break;
+											}
+											else if(arr[mid] < x){
+												left = mid;
+											}
+											else right = mid;
+										}
+										
+										List<Integer> list = new ArrayList<>();
+										for(int i = 0; i < k; i++){
+											if(left < 0) {
+												list.add(arr[right++]);
+												continue;
+											}
+											if(right >= arr.length) {
+												list.add(arr[left--]);
+												continue;
+											}
+											int leftDif = Math.abs(x-arr[left]);
+											int rightDif = Math.abs(x-arr[right]);
+											if(leftDif<=rightDif) list.add(arr[left--]);
+											else list.add(arr[right++]);
+										}
+										Collections.sort(list);
+										return list;
+									}
+								}</textarea></p>
+
+							 
+
+			</div>
+
+		<!-- Footer -->
+			<!-- <footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer> -->
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+		<title>Generic - Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Kelsey Chen's personal website</a>
+				<nav>
+						<a class="icon solid fa-arrow-circle-left" href="index.html">  Homepage</a></li>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Leetcode 205. Isomorphic Strings</h1>
+							<!-- <span class="image fit"><img src="images/pic04.jpg" alt="" /></span> -->
+							<h3>Time complexity: o(n)</h3>
+							<h3>Space complexity: o(n)</h3>
+							<p><textarea cols="1" rows="25">
+							class Solution {
+								public boolean isIsomorphic(String s, String t) {
+									//key = character from s, value = character it's mapping to
+									HashMap<Character, Character> map = new HashMap<>();
+									for(int i = 0; i < s.length(); i++){
+										char c1 = s.charAt(i);
+										char c2 = t.charAt(i);
+										//if c1 already has a mapping value, check if that value = c2
+										if(map.containsKey(c1)){
+											if(map.get(c1) != c2) return false;
+										}
+										//if c1 doesn't have a mapping value, check if c2 is someone's mapping value
+										else {
+											if(map.containsValue(c2)){
+												return false;
+											}
+											else {
+												map.put(c1, c2);
+											}
+										}
+									}
+									return true;
+								}
+							}</textarea></p>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<!-- <footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer> -->
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

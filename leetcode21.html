@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+		<title>Generic - Hyperspace by HTML5 UP</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Kelsey Chen's personal website</a>
+				<nav>
+					<a class="icon solid fa-arrow-circle-left" href="index.html">  Homepage</a></li>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Leetcode 205. Isomorphic Strings</h1>
+							<!-- <span class="image fit"><img src="images/pic04.jpg" alt="" /></span> -->
+							<h3>Approach 1: recursion</h3>
+							<h4>Time complexity: o(n)</h4>
+							<h4>Space complexity: o(n)</h4>
+					
+							<p><textarea cols="1" rows="25">
+								/**
+								* Definition for singly-linked list.
+								* public class ListNode {
+								*     int val;
+								*     ListNode next;
+								*     ListNode(int x) { val = x; }
+								* }
+								*/
+							   class Solution {
+								   public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+									   
+									   if(l1 == null) {return l2;}
+									   if(l2 == null) {return l1;}
+
+									   if(l1.val < l2.val){
+										   l1.next = mergeTwoLists(l1.next, l2);
+										   return l1;
+									   }
+
+									   else {
+										   l2.next = mergeTwoLists(l1, l2.next);
+										   return l2;
+									   } 
+								   }
+							   }</textarea></p>
+
+							   <h3>Approach 2: iteration</h3>
+							<h4>Time complexity: o(n)</h4>
+							<h4>Space complexity: o(n)</h4>
+					
+							<p><textarea cols="1" rows="30">
+								/**
+								* Definition for singly-linked list.
+								* public class ListNode {
+								*     int val;
+								*     ListNode next;
+								*     ListNode(int x) { val = x; }
+								* }
+								*/
+							   class Solution {
+								   public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+									   
+									ListNode dummy = new ListNode(0);
+									ListNode cur = dummy;
+									while(l1 != null && l2 != null){
+										if(l1.val < l2.val){
+											cur.next = new ListNode(l1.val);
+											l1 = l1.next;
+										}
+										else{
+											cur.next = new ListNode(l2.val);
+											l2 = l2.next;
+										}
+										cur = cur.next;
+									}
+									if(l1 == null){
+										cur.next = l2;
+									}
+									else{
+										cur.next = l1;
+									}
+									return dummy.next;
+								   }
+							   }</textarea></p>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<!-- <footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Untitled. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer> -->
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
