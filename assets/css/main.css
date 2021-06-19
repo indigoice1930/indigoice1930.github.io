@@ -196,6 +196,7 @@ input, select, textarea {
 	}
 
 	p {
+		color:  #ffffff;
 		margin: 0 0 2em 0;
 	}
 
@@ -207,8 +208,9 @@ input, select, textarea {
 	}
 	
 	h5 {
-		color: #bebcbcf7;
-		font-weight: bold;
+		color:  #ffffff;
+		font-family: 'Franklin Gothic Medium', Arial;
+		/* font-weight: bold; */
 	}
 
 		h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1869,17 +1871,17 @@ input, select, textarea {
 		color: #ffffff !important;
 		cursor: pointer;
 		display: inline-block;
-		font-size: 0.6em;
+		font-size: 1em;
 		font-weight: bold;
-		height: calc(4.75em + 2px);
-		letter-spacing: 0.25em;
-		line-height: 4.75em;
+		height: calc(4.75em );
+		letter-spacing: 0.1em;
+		line-height: 2.75em;
 		outline: 0;
-		padding: 0 3.75em;
+		padding: 0 1.75em;
 		position: relative;
 		text-align: center;
 		text-decoration: none;
-		text-transform: uppercase;
+		/* text-transform: uppercase; */
 		white-space: nowrap;
 	}
 
